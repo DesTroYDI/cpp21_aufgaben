@@ -10,4 +10,9 @@ Volle Lösungen müssen bei der Prüfung nicht geschrieben werden (nur spezifisc
 Darüber hatte der Dozent ein Paar "Anregungen, aber keine Kritik". Ich hoffe, ich finde die Zeit um die Empfehlungen auszuführen.
 ```
 
-Wichtige Informationen zu Pointern:
+Zusätzliche Informationen für die Durchführung der CPP21 TOK:
+
+1. [Programmaufbau](/Informationen/Aufbau.md)
+2. Informationen
+    - [Pointer](/Informationen/Pointer.md)
+    - [Arrays bzw. Felder](/Informationen/Array.md)    
