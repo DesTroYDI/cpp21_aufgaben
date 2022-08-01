@@ -14,5 +14,6 @@ Zusätzliche Informationen für die Durchführung der CPP21 TOK:
 
 1. [Programmaufbau](/Informationen/Aufbau.md)
 2. Informationen
+    - [Klassen](/Informationen/Klassen.md)
     - [Pointer](/Informationen/Pointer.md)
     - [Arrays bzw. Felder](/Informationen/Array.md)    
