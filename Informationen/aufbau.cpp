@@ -5,8 +5,9 @@
 
 // Bibliothek für den Umgang mit strings
 // Datentyp: string s = "test";
-// Funktionen:  s.size()
+// Funktionen:  s.length()
 // s + s2
+// to_string()
 // ...
 #include <string>
 
@@ -20,5 +21,9 @@ using namespace std;
 
 // Standartisierte Hauptfunktion
 int main(){
+    for(int i=0;i < 20;i++){
+        string s = "Neue Nummer: " + to_string(i);
 
+        cout << "[" << s << "] || Laenge: " << s.length() << endl;
+    }
 }
