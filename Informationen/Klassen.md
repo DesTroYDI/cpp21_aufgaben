@@ -11,3 +11,11 @@ Output:
 ```
 
 ```
+
+## Head/Stack
+<br>
+
+```cpp
+
+
+```

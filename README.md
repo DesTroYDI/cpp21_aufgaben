@@ -21,5 +21,6 @@ Zusätzliche Informationen für die Durchführung der CPP21 TOK:
         - [Virtuell](/Informationen/Virtuell.md)
     - [Pointer](/Informationen/Pointer.md)
     - [Arrays bzw. Felder](/Informationen/Array.md)
+    - [Strukturen](/Informationen/Strukturen.md)
     - [Vektoren](/Informationen/Vektoren.md)  
     - [Überladung](/Informationen/%C3%9Cberladung.md)   
