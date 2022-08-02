@@ -102,3 +102,32 @@ ref = var2;         // ref (und damit var1) ist nun 20
 Die Implementierung einer Funktion mit Zeigern ist demnach nur aufwendiger aber in der Laufzeit gleich:o<br/><br/>
 **Gleich auch ist dabei erkennbar, dass es schwierig ist zu unterscheiden, ob es sich um eine Call-By-Referenz oder Call-By-Value Funktion handel, wenn man diese nicht kennt.**
 ![Bild](../Ressourcen/Screenshot%202022-08-02%20213540.png)
+
+<br/>
+
+## Funktionspointer
+<br/>
+Pointer, die auf eine Funktion verweise, sodass diese als Parameter angewendet werden können:
+
+```cpp
+int add(int x, int y){
+    return x + y;
+}
+
+int mult(int x, int y){
+    return x * y;
+}
+
+int main()[
+    // Funktionspointer
+    int (*op)(int, int);
+
+    op = add;
+    // op = &add;
+    cout << op(3,4) << endl; // Ausgabe: 7
+
+    op = mult;
+    // op = &mult;
+    cout << op(3,4) << endl; // Ausgabe: 12
+]
+```
