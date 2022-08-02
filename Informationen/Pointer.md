@@ -1,7 +1,7 @@
 ## Informationen zu Pointern
 >### Autor: Hendrik Groß
 >### Datum: 01.08.2022
-
+<br/>
 
 ## Code:
 ```cpp
@@ -64,6 +64,7 @@ int main(){
     // Wert kann nicht bestimmt werden, da der Typ nicht bekannt ist 
 }
 ```
+<br/>
 
 ## Output:
 ```
@@ -81,5 +82,23 @@ Pointer [cptr] = 0xea4d7ff8d8 || Wert = 20
 
 Pointer [voidPtr] = 0xea4d7ff8dc
 ```
+<br/>
 
 ## Call-By-Referenz vs Call-By-Value
+<br/>
+Durch die Anwendung von Call-By-Referenz können die Funktionen so geschreiben werden, als als wären keine Zeiger vorhanden. Es können also normale Variablen angewendet werden. Dennoch verhält sich eine Referenz wie ein Zeiger und bringt damit die deutlichen die Laufzeitvorteile mit sich. Denn anderes als bei Call-By-Value wird der Kopieraufwand vermieden
+<br/><br/>
+***!!! WICHTIG !!! Referenzen sich keine Zeiger und sind demnach auch kein eigenes Objekt und reserviert somit auch keinen Speicher***
+
+```cpp
+int var1 = 10;      // Normale Variable mit 10 initialisiert
+int var2 = 20;      // Normale Variable mit 20 initialisiert
+
+// Referenz
+int& ref = var1;    // Referenz wird auch var1 gesetzt
+ref = var2;         // ref (und damit var1) ist nun 20
+```
+
+Die Implementierung einer Funktion mit Zeigern ist demnach nur aufwendiger aber in der Laufzeit gleich:o<br/><br/>
+**Gleich auch ist dabei erkennbar, dass es schwierig ist zu unterscheiden, ob es sich um eine Call-By-Referenz oder Call-By-Value Funktion handel, wenn man diese nicht kennt.**
+![Bild](../Ressourcen/Screenshot%202022-08-02%20213540.png)

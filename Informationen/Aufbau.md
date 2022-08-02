@@ -1,8 +1,9 @@
 ## Aufbau von Programmen innerhalb der Aufgaben
 >### Autor: Hendrik Groß
 >### Datum: 01.08.2022
+<br/>
 
-Standardmäßiger Aufbau eines CPP-Programmes:
+## Standardmäßiger Aufbau eines CPP-Programmes:
 ```cpp
 // Implementiert die Möglichkeit der Ein-/Ausgabeströme:
 // cin >> 
@@ -34,8 +35,9 @@ int main(){
     }
 }
 ```
+<br/>
 
-Output:
+## Output:
 ```
 [Neue Nummer: 0] || Laenge: 14
 [Neue Nummer: 1] || Laenge: 14
