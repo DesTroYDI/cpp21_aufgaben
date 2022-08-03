@@ -14,13 +14,14 @@ Zusätzliche Informationen für die Durchführung der CPP21 TOK:
 
 1. [Programmaufbau](/Informationen/Aufbau.md)
 2. Informationen
-    - [Klassen](/Informationen/Klassen.md)
+    - [Klassen/Strukturen](/Informationen/Klassen.md)
         - [Headers](/Informationen/Headers.md)
+        - [Operatoren](/Informationen/Operatoren.md)
         - [Vererbung](/Informationen/Vererbung.md)
         - [Abtrakte Klassen](/Informationen/AbstrakteKlassen.md)
         - [Virtuell](/Informationen/Virtuell.md)
     - [Pointer](/Informationen/Pointer.md)
     - [Arrays bzw. Felder](/Informationen/Array.md)
-    - [Strukturen](/Informationen/Strukturen.md)
     - [Vektoren](/Informationen/Vektoren.md)  
     - [Überladung](/Informationen/%C3%9Cberladung.md)   
+    - [Heap/Stack](/Informationen/HeapStack.md) 
