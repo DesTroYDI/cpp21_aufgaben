@@ -15,6 +15,10 @@ Konto Konto::operator+(const Konto &anderesKonto){
     return Konto(kontostand);
 };
 
+ostream& operator<<(ostream &aus, const Konto &k){
+    return aus << k.kontostand << endl;
+};
+
 Konto Konto::operator-(const Konto &anderesKonto){
     kontostand -= anderesKonto.kontostand;
     // Das Objekt selber wird wieder zurückgegeben nach manipulation
@@ -28,6 +32,8 @@ void Konto::druckeKontostand (){
 int main(){
     Konto k1 = Konto(30);
     Konto k2 = Konto(60);
+
+    cout << k1;
 
     k1.druckeKontostand();
     k1 = k1 + k2;               // 30 + 60 = 90

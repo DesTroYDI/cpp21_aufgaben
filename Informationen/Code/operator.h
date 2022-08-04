@@ -10,6 +10,7 @@ public:
     //Operator
     Konto operator+(const Konto &anderesKonto);
     Konto operator-(const Konto &anderesKonto);
-    
+    friend ostream& operator<<(ostream &aus, const Konto &k);
+
     void druckeKontostand();
 };

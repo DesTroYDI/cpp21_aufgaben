@@ -33,7 +33,7 @@ string Arbeiter::testFnc(int n){
 int main(){
     Arbeiter a1("Gross", "Hendrik", 1733);
     a1.arbeiten();
-
+    
     // Späte Bindung
     // Person* pers;
     // pers = new Arbeiter("Gross", "Hendrik", 1734);

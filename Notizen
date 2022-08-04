@@ -1,0 +1,125 @@
+Musterklausur 1.1
+
+Aufgabe 1
+a=4
+b=8
+x=5
+erg=4
+
+Aufgabe 2
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    string worte[4]={"katze", "hund", "maus","pferd"};
+    string lowest = "";
+    int x=0;
+    int y=0;
+
+    while(x<3){
+        y = x+1;
+        while(y<4){
+            if(worte[x] < worte[y]){
+                lowest = worte[x];
+                worte[x] = worte[y];
+                worte[y] = lowest;
+            }
+            y++;
+        }
+        x++;
+    }
+
+    for(int i=0;i<4;i++)
+        cout << "Wort: " << worte[i] << endl;
+};
+
+
+Musterklausur 2.1
+
+1)
+vor dem Tausch : a = 10 , b = 20
+nach dem Tausch : a = 20 , b = 10
+-----------------------------
+nach dem Tausch in der main- funktion : 
+a = 10
+b = 20
+
+2)
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int zahl1 = 0;
+    int zahl2 = 0;
+    cout << "Bitte beide Zahlen eingeben:" << endl;
+    cin >> zahl1;
+    cin >> zahl2;
+
+    int gerundet =0;
+    int ganzzahl =0;
+    int rest;
+
+    gerundet = zahl1 / zahl2;
+    rest = zahl1 % zahl2;
+    if(rest >= zahl2 / 2)
+        gerundet++;
+
+    cout << zahl1 << " : " << zahl2 << " = " << gerundet << endl;
+};
+
+Aufgabe 3:
+maximum(maximum(z1,z2),z3);
+
+Aufgabe 4:
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    string wort;
+    int verschFaktor;
+
+    char verschl[10];
+
+    cout << "Geben Sie bitte ein Wort ein (max. 10 Zeiche):" <<endl;
+    cin >> wort;
+    cout << "Wählen Sie einen Verschiebefaktor:" <<endl;
+    cin >> verschFaktor;
+
+    for(int i=0;i<10;i++){
+        verschl[i] = wort[i]+verschFaktor;
+    }
+
+    cout << "Verschlüsselt: " << verschl <<endl;
+}
+
+Aufgabe 5:
+n1 = 6
+n2 = 6,25
+
+Aufgabe 6:
+Konstruktoren werden bei initialisierung einer Klasse aufgerufen und können initiale werte setzen
+Defaultparameter sind dazu da, wenn keine weitere Definition kommt trotzdem 
+ein Wert vorhanden istream
+
+Aufgabe 7:
+7.1 
+class Mitarbeiter{
+private:
+    int persNr;
+    string name;
+    char geschlecht;
+
+    Termin *termine[]; 
+public:
+    ~Mitarbeiter(){
+        cout << "Im Destruktor" << endl;
+        delete [] termine;
+    };
+
+    friend ostream& operator<<(ostream &aus, const Mitarbeiter &m){
+        cout << name <<endl;
+    };
+}

@@ -25,5 +25,6 @@ Zusätzliche Informationen für die Durchführung der CPP21 TOK:
     - [Überladung](/Informationen/%C3%9Cberladung.md)   
     - [Heap/Stack](/Informationen/HeapStack.md) 
 3. [Templates](/Informationen/Templates.md)
+3. [Exceptions](/Informationen/Exceptions.md)
 4. [Standardfunktionen](/Informationen/Bibliotheken.md)
 5. [Klausuraufgaben](/Informationen/Klausuraufgaben.md)

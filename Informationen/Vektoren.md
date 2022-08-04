@@ -43,6 +43,7 @@ int main(){
     // Solange möglich bis [it != vec2.end()]
     
     vec.clear(); // Leert den Vektor
+
 };
 ```
 <br>

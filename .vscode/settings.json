@@ -44,6 +44,9 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "vector": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "notizen": "cpp",
+        "list": "cpp",
+        "xtree": "cpp"
     }
 }
