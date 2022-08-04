@@ -6,7 +6,3 @@
 ## Heap/Stack
 <br>
 
-```cpp
-
-
-```

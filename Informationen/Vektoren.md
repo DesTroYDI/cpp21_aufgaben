@@ -113,16 +113,50 @@ Wert: 14
 <br>
 
 # Maps
-Der Template-Datentyp `maps` 
+Der Template-Datentyp `maps` ist eine Folge von Paaren aus Schlüsseln und Werten. Dabei ist jedem Schlüssel genau ein Wert zugeordnet. 
 
 ## C++-Datei
 ```cpp
+#include <iostream>
+#include <map> // Ermöglicht das Anwenden von Maps
 
+using namespace std;
+
+// Definition
+typedef map<string, string> telefonMap;
+
+
+int main(){
+    map<string, string> telefonMap; // Initialisierung
+    telefonMap::iterator it; // Iterator
+
+    // Werte setzen
+    telefonMap["paul"] = "1232434";
+    telefonMap["gerda"] = "675657567";
+    telefonMap["du"] = "4235645";
+    telefonMap["ich"] = "9879787";
+
+    // Werte auslesen
+    it = telefonMap.begin();
+    while(it != telefonMap.end()){
+        cout << "Key: " << it->first << " | Value= " << it->second << endl;
+        it++;
+    }
+
+    cout << "Wert suchen und finden..." << endl;
+    it = telefonMap.find("paul");
+    cout << "Key: " << it->first << " | Value= " << it->second << endl;
+};
 ```
 <br>
 
 ## Output
 ```
-
+Key: du | Value= 4235645
+Key: gerda | Value= 675657567
+Key: ich | Value= 9879787
+Key: paul | Value= 1232434
+Wert suchen und finden...
+Key: paul | Value= 1232434
 ```
 <br>
