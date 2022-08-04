@@ -24,5 +24,6 @@ Zusätzliche Informationen für die Durchführung der CPP21 TOK:
     - [Vektoren/Maps](/Informationen/Vektoren.md)  
     - [Überladung](/Informationen/%C3%9Cberladung.md)   
     - [Heap/Stack](/Informationen/HeapStack.md) 
-3. [Standardbibliotheken](/Informationen/Bibliotheken.md)
-4. [Klausuraufgaben](/Informationen/Klausuraufgaben.md)
+3. [Templates](/Informationen/Templates.md)
+4. [Standardfunktionen](/Informationen/Bibliotheken.md)
+5. [Klausuraufgaben](/Informationen/Klausuraufgaben.md)
