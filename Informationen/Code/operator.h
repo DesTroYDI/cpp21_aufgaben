@@ -1,4 +1,3 @@
-
 using namespace std;
 
 class Konto{
@@ -9,8 +8,8 @@ public:
     Konto(double betrag);
 
     //Operator
-    Konto operator+(Konto &anderesKonto);
-    Konto operator-(Konto &anderesKonto);
+    Konto operator+(const Konto &anderesKonto);
+    Konto operator-(const Konto &anderesKonto);
     
     void druckeKontostand();
 };

@@ -9,13 +9,13 @@ Konto::Konto(double betrag){
 };
 
 // Implementierung und Rückgabetyp ist der Typ der Klasse
-Konto Konto::operator+(Konto &anderesKonto){
+Konto Konto::operator+(const Konto &anderesKonto){
     kontostand += anderesKonto.kontostand;
 
     return Konto(kontostand);
 };
 
-Konto Konto::operator-(Konto &anderesKonto){
+Konto Konto::operator-(const Konto &anderesKonto){
     kontostand -= anderesKonto.kontostand;
     // Das Objekt selber wird wieder zurückgegeben nach manipulation
     return *this;

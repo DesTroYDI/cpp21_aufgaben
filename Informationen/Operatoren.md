@@ -29,8 +29,8 @@ public:
     Konto(double betrag);
 
     //Operator
-    Konto operator+(Konto &anderesKonto);
-    Konto operator-(Konto &anderesKonto);
+    Konto operator+(const Konto &anderesKonto);
+    Konto operator-(const Konto &anderesKonto);
     
     void druckeKontostand();
 };
@@ -40,7 +40,7 @@ public:
 ## C++-Datei (konto.cpp)
 ```cpp
 #include <iostream>
-#include "konto.h" // Header-Datei referenzieren
+#include "operator.h"
 
 using namespace std;
 
@@ -50,13 +50,13 @@ Konto::Konto(double betrag){
 };
 
 // Implementierung und Rückgabetyp ist der Typ der Klasse
-Konto Konto::operator+(Konto &anderesKonto){
+Konto Konto::operator+(const Konto &anderesKonto){
     kontostand += anderesKonto.kontostand;
 
     return Konto(kontostand);
 };
 
-Konto Konto::operator-(Konto &anderesKonto){
+Konto Konto::operator-(const Konto &anderesKonto){
     kontostand -= anderesKonto.kontostand;
     // Das Objekt selber wird wieder zurückgegeben nach manipulation
     return *this;

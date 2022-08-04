@@ -16,7 +16,7 @@ Student::Student( string n, string v, int m ) // Konstruktor Student
 { };
 
 void Student::arbeiten(){
-     cout << this->getVorname() << " " << this->getName() << " [" << this->matrikelnummer << "] ist am studieren..." << endl;
+     cout << getVorname() << " " << this->getName() << " [" << matrikelnummer << "] ist am studieren..." << endl;
 }
 
 int main(){
