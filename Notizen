@@ -246,4 +246,216 @@ Angebot* Angebotscontainer::getAngebot(string angebotsNr){
 };
 
 Aufgabe 7 (2.1)
+#include <iostream>
+#include <vector>
+using namespace std;
 
+class Mitarbeiter{
+private:
+    vector<Termin*> alleTermine;
+public:
+    ~Mitarbeiter(){
+        for(int i=0; i<alleTermine.size();i++){
+            if(alleTermine.at(i) !=0){
+                delete alleTermine.at(i);
+                alleTermine.at(i) =0;
+            }
+         }
+    }
+
+    friend ostream& operator<<(ostream &aus, const Mitarbeiter &m){
+        o << "Personalnummer: " << persNr << endl;
+        o << "Name: " << name << endl;
+
+        for(int i=0; i<alleTermine.size();i++){
+            o << *m.alleTermine.at(i) << m.alleTermine.at(i)->getDatum() << endl;
+         }
+
+        return o;
+    }
+}
+
+
+Komplexaufgabe 2 (2.1)
+
+
+// Wahlfach -----------------------------------------------------------------------------------------------------
+
+// Header Datei
+using namespace std;
+
+class Wahlfach{
+private:
+    int maxAnzahlStudenten;
+    int aktuelleAnzahlStudenten;
+public:
+    bool istNochPlatzfürEinenStudent();
+};
+
+// CPP Datei
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool Wahlfach::istNochPlatzfürEinenStudent(){
+    bool b = false;
+    if(aktuelleAnzahlStudenten < maxAnzahlStudenten){
+        b=true;
+    }
+    return b;
+};
+
+// Student -----------------------------------------------------------------------------------------------------
+class Student{
+private:
+    int matrikelNr;
+    string name;
+    Anschrift a_wert;
+    GebDat g_wert;
+
+    vector<Note*> alleNoten;
+public:
+    Student(int m, string n, Anschrift a, GebDat g);
+    bool MatrikelNrGleich(int m);
+    double getDurchschnittsnote();
+    vector<Note*> getAlleNoten();
+    void trageNoteEin(double note, int fachNr, string fachbez);
+
+    friend ostream& operator<<(ostream &aus, const Student &s);
+};
+
+// CPP Datei
+#include <iostream>
+#include <vector>
+using namespace std;
+
+Student::Student(int m, string n, Anschrift a, GebDat g)
+    :name(n), matrikelNr(m),a_wert(a), g_wert(g)  {};
+
+
+ bool Student::MatrikelNrGleich(int m){
+    bool b = false;
+    if(m == matrikelNr){
+        b=true;
+    }
+    return b;
+ };
+
+double Student::getDurchschnittsnote(){
+    double gesamtWert;
+    double anzahl = alleNote.size();
+
+    for(int i=0; i< anzahl;i++){
+        gesamtWert += alleNoten.at(i)->getNote();
+    }
+
+    return (gesamtWert / anzahl);
+};
+
+vector<Note*> Student::getAlleNoten(){ return alleNoten; };
+
+void Student::trageNoteEin(double note, int fachNr, string fachbez){
+    
+    Fach f(fachNr, fachBez);
+    Note* n = new Note(note, f);
+
+    alleNoten.push_back(n);
+}
+
+ostream& operator<<(ostream &aus, const Student &s) {
+    o<<"";
+// Alle Daten ausgeben
+    return o;
+}
+
+// StudentContainer -----------------------------------------------------------------------------------------------------
+class StudentContainer{
+private:
+    vector<Student*> alleStudenten;
+public:
+    StudentContainer(vector<Student*> studenten);
+    void fuegeStudentHinzu(int matrikel, string name, GebDat datum, Anschrift anschrift);
+    Student getStudent(int nummer);
+    vector<Note*> getAlleNotenEinesStudent(int nummer);
+    string ermittleBestenStudenten();
+    vector<string> getAlleStudenten(string ort);
+
+    friend ostream& operator<<(ostream &aus, const StudentContainer &s);
+};
+
+// CPP Datei
+#include <iostream>
+#include <vector>
+using namespace std;
+
+StudentContainer::StudentContainer(vector<Student*> studenten)
+    : alleStudenten(studenten){ };
+
+
+void StudentContainer::fuegeStudentHinzu(int matrikel, string name, GebDat datum, Anschrift anschrift){
+    Student* stud = new Student(matrikel, name,datum,anschrift);
+
+    alleStudenten.push_back(stud);
+};
+
+Student StudentContainer::getStudent(int nummer){
+    Student* std;
+
+    for(int i=0;i<alleStudenten.size();i++){
+        if(alleStudenten.at(i)->getMatrikelnummer == nummer){
+            std = alleStudenten.at(i);
+        }
+    }
+
+    return *std;
+};
+
+vector<Note*> StudentContainer::getAlleNotenEinesStudent(int nummer){
+    Student std = getStudent(nummer);
+
+    return std.getAlleNoten();
+};
+
+string StudentContainer::ermittleBestenStudenten(){
+    string s;
+    double niedrigesterSchnitt = 10;
+
+    for(int i=0;i<alleStudenten.size();i++){
+        double hilfsWert = alleStudenten.at(i)->getDurchschnittsnote();
+        if(hilfsWert < niedrigesterSchnitt){
+            s = alleStudenten.at(i)->getName();
+            niedrigesterSchnitt = hilfsWert;
+        }
+    }
+
+    return s;
+};
+
+vector<string> StudentContainer::getAlleStudenten(string ort){
+    vector<string> vec;
+
+    for(int i=0;i<alleStudenten.size();i++){
+        if(alleStudenten.at(i)->getOrt() == ort){
+            vec.push_back(alleStudenten.at(i)->getName());
+        }
+    }
+
+    return vec;
+};
+
+ostream& operator<<(ostream &aus, const StudentContainer &s) {
+    o<<"";
+// Alle Daten ausgeben
+    return o;
+};
+
+
+int main(){
+    vector<Student*> initVEc;
+
+    StudentContainer vecStudenten(initVEc);
+    
+    // Address und GEburtdatum initialisieren und an Funktion weitergeben
+
+    //vecStudenten.fuegeStudentHinzu()
+};
