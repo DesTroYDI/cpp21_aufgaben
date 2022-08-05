@@ -120,7 +120,7 @@ public:
     };
 
     friend ostream& operator<<(ostream &aus, const Mitarbeiter &m){
-        cout << name <<endl;
+        cout << m.name <<endl;
     };
 }
 
@@ -460,3 +460,69 @@ int main(){
     //vecStudenten.fuegeStudentHinzu()
 };
 
+Komplexaufgabe 4 (2.1)
+// Showable -----------------------------------------------------------------------------------------------------
+
+// .h 
+#include <iostream>
+#include <vector>
+using namespace std;
+class Showable{
+public:
+	Showable();
+	virtual void gibtAus() =0;
+}
+
+// Kunde -----------------------------------------------------------------------------------------------------
+
+// .h 
+#include <iostream>
+
+using namespace std;
+
+class Kunde{
+private:
+	string name;
+	string vorname;
+	Datum* kunde_seit;
+public:
+	Kunde(string n, string v, Datum* d);
+	
+	bool kundeGleich(string name);
+	void gibtAus();
+	void anzeigen(string nachNacme, Kunde k);
+	
+	friend ostream& operator<<(ostream &aus, const Kunde &k);
+	friend void operator>(Kunde &k1, Kunde &k1);
+}
+
+// .cpp 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+Kunde(string n, string v, Datum* d);
+		: Showable(), name(n), vorname(v), kunde_seit(d);
+
+bool Kunde::kundeGleich(string n){
+	bool b = false;
+	if(n == name){
+		b = true;
+	}	
+	return b;
+};
+
+void Kunde::gibtAus()
+	cout << *this << endl;
+};
+
+void Kunde::anzeigen(string nachNacme, Kunde k){
+	o << "Der Kunde " << nachNacme << " hat folgende Daten" << endl;
+	cout << *this << endl;
+};
+
+ostream& operator<<(ostream &aus, const Kunde &k){
+	Kundendaten
+	...
+	
+};
