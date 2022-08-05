@@ -526,3 +526,398 @@ ostream& operator<<(ostream &aus, const Kunde &k){
 	...
 	
 };
+
+Aufgabe 2 (3.1)
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int input;
+    string weitermachen = "ja";
+
+    while(weitermachen == "ja"){
+        cout << "Bite eine Zahl zwischen 1 und 10 eingeben." << endl;
+        cin >> input;
+
+        for(int i=1;i<=10;i++){
+            int ergeb = i * input;
+            cout << i << " x " << input << " = " << ergeb << endl;
+        }
+        
+        cout << "Wollen Sie weitermachen (ja/nein)";
+        cin >> weitermachen;
+    }
+};
+
+Aufgabe 3 (3.1)
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int input;
+    string weitermachen = "ja";
+
+    while(weitermachen == "ja"){
+        cout << "Bite eine Zahl zwischen 1 und 100 eingeben." << endl;
+        cin >> input;
+
+        if(input < 101 && input > 0){
+            
+            cout << input << " (10) = ";
+            int hilfsvariable = input;
+            while(hilfsvariable > 1){
+                    int rest = hilfsvariable % 2;
+                    cout << rest;
+                    hilfsvariable = hilfsvariable / 2;
+            }
+
+            cout << " (2)" << endl;
+        }
+        
+        cout << "Erneute Eingabe erwünscht (ja/nein) ";
+        cin >> weitermachen;
+    }
+};
+
+Aufgabe 4 (3.1)
+
+friend ostream& operator<< (ostream &aus, Anschrift &a){
+    return << "Ort: " << a.m_ort << ", Strasse: "<< a.m_strasse;
+};
+friend ostream& operator<< (ostream &aus, Anschrift *p_a){
+    return << "Ort: " << a->m_ort << ", Strasse: "<< a->m_strasse;
+};
+
+// Statisches 
+cout << a;
+cout << &a;
+
+
+// Dynamisches 
+cout << *a;
+cout << a;
+
+Aufgabe 5 (3.1)
+cout << addition(addition(z1,z2),addition(z3,z4));
+
+Komplexaufgabe 2 (3.1)
+
+
+// Mitarbeiter -----------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <vector>
+
+usnig namespace std;
+
+class Mitarbeiter{
+private:
+    int nr;
+    string name;
+    Datum dats[2];
+    vector<Kontaktdaten> alleKontaktdaten;
+    Abteilung abteilung;
+public:
+    Mitarbeiter();
+    Mitarbeiter(int n, string nm, Datum geb, Datum eins, Abteilung abt):
+        nr(n),name(nm), abteilung(abt)
+        {
+            dats[0] = geb;
+            dats[1] = eins;
+        };
+
+    void kontaktAendern(string bezAlt, string bezNeu){
+        for(int i=0;i<alleKontaktdaten.size();i++){
+            if(alleKontaktdaten.at(i).getBezeichnung() == bezAlt){
+                alleKontaktdaten.at(i).setBezeichnung(bezNeu);
+            }
+        }
+    };
+
+    friend ostream& operator<<(ostream &aus, const Mitarbeiter &m){
+        cout << m.nr << " " << ....
+    };
+};
+
+// Angestellter -----------------------------------------------------------------------------------------------------
+// Header
+#include <iostream>
+#include <vector>
+
+usnig namespace std;
+
+class Angestellter: public Mitarbeiter{
+public:
+    Angestellter(int n, string nm, Datum geb, Datum eins, Abteilung abt, double g)
+        :Mitarbeiter(n,nm,geb,eins, abt) , gehalt(g){};
+};
+
+// MitarbeiterContainer -----------------------------------------------------------------------------------------------------
+// Header
+#include <iostream>
+#include <vector>
+
+usnig namespace std;
+
+class MitarbeiterContainer{
+private:
+    vector<Mitarbeiter*> alleMitarbeiter;
+public:
+    MitarbeiterContainer(){};
+    
+    void mitarbeiterHinzu(Mitarbeiter* m){alleMitarbeiter.push_back(m);};
+
+    bool istMitarbeiterInContainer(int nr){
+        bool b = false;
+        for(int i=0;i<alleMitarbeiter.size();i++){
+            if(alleMitarbeiter.at(i)->getNr() == nr){
+                b = true;
+            }
+        }
+        return b;
+    };
+
+    void kontaktHinzu(int nr, string bez, string wert){
+        Kontaktdaten k(bez, wert);
+        for(int i=0;i<alleMitarbeiter.size();i++){
+            if(alleMitarbeiter.at(i)->getNr() == nr){
+                alleMitarbeiter.at(i)->kontaktHinzu(k);
+            }
+        }
+    };
+};
+
+int main(){
+    MitarbeiterContainer cont;
+
+    Abteilung a("","");
+    Datum dt1(25,05,1999);
+    Datum dt2(25,05,2008);
+
+    Angestellter ang(1,"Hendrik", dt1, dt2, a,2000);
+
+    
+    13/ ja, in der Methode alles anzeigen 
+    Polymorphie kommt bei Vererbungen und abstrakten Klassen vor. Späte Bindung ...
+    Gleiche Methode bin mit gleicher Signatur in unterschiedlichen Klassen und unterschiedlicher implementierung
+};
+
+Komplexaufgabe 3 (3.1)
+
+#include <iostream>
+
+using namespace std;
+
+class Fahrzeug(){
+private:
+    string bezeichnung;
+    int ps;
+    double normalPreis;
+    static int anzahlVermietungen;
+public:
+    Fahrzeug(string b, int p, double preis)
+        : bezeichung(b), ps(p), normalPreis(preis) {};
+
+    static int getAnzahlVermietungen(){ return anzahlVermietungen; };
+
+    void vermieten(){ anzahlVermietungen++; };
+
+    virtual double getVermietungskostenProTag() = 0;
+
+    friend ostream& operator<< (ostream &aus, const Fahrzeug &f){
+        // ausgabe aller daten
+    };
+};
+
+class PKW: public Fahrzeug{
+private:
+    string getriebeArt;
+    static int anzahlVermietungen;
+public:
+    PKW(string b, int p, double preis, string get)
+        :Fahrzeug(b,p,preis), getriebeArt(get) {};
+
+    static int getAnzahlVermietungen()
+    { return anzahlVermietungen; };
+
+    void vermieten(){
+        Fahrzeug::vermieten();
+        anzahlVermietungen++;
+    };            
+};
+
+class Limousine: public PWK{
+private:
+    static int anzahlVermietungen;
+
+public:
+    Limousine(string b, int p, double preis, string get)
+        :PKW(b,p,preis,get){};
+
+    void vermieten(){
+        PWK::vermieten();
+        anzahlVermietungen++;
+    };   
+
+    double getVermietungskostenProTag(){
+        double wert = getVermietungskostenProTag();
+        if(getBezeichnung() == "Mittelklasse")
+            wert +=10;
+        else if (getBezeichnung() == "Luxusklasse")
+            wert+=20;
+        return wert;
+    };
+
+    void ausgabe(){
+        cout << *this;
+    };
+};
+
+int main(){
+    Limousine l1(..);
+    Limousine* l2 = new Limousine(...);
+
+    cout <<"FAhrzeug: " << Fahrzeug::getAnzahlVermietung;
+    cout <<"Limo: " << Limousine::getAnzahlVermietung;
+
+    vector<Fahrzeug*> lst;
+
+    for(int i=0;i<lst.size();i++){
+        cout << *lst.at(i) << endl;
+    }
+};
+
+Komplexaufgabe 4 (3.1)
+
+#include <iostream>
+
+using namespace std;
+
+class MyArray{
+private:
+    int m_arraySize;
+    int m_index;
+    int* m_p_array;
+public:
+    MyArray(int arrSize): {
+        m_arraySize = arrSize;
+        m_index = -1;
+        m_p_array = new int [arrSize];
+    };
+
+    int getArraySize(){ return m_arraySize; };
+
+    void einfügen(int value){
+        if(m_index == -1)
+            m_index++;
+
+        if(m_index >= m_arraySize){
+            cout << "Array ist voll" << endl;
+            return;
+        }
+        else{
+            *(m_p_array + m_index) = value;
+            m_index++;
+        }
+    };
+
+    void inhalteLoeschen(){
+        if(m_index == -1){
+            cout << "Array ist leer" << endl;
+            return;
+        }
+
+        for(int i=0;i<m_arraySize;i++){
+            *(m_p_array + i) = 0;
+        }
+        m_index = -1;
+    };
+
+    void anzeigen(){
+        if(m_index == -1){
+            cout << "Array ist leer" << endl;
+            return;
+        }
+
+        for(int i=0;i<m_arraySize;i++){
+            cout << *(m_p_array + i) << endl;
+        }
+    };
+
+    bool isEmpty(){
+        if(m_index == -1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    };
+
+    bool isFull(){
+        if(m_index >= m_arraySize){
+            return true;
+        }
+        else{
+            return false;
+        }
+    };
+
+    bool istImArray(int value){
+        if(m_index == -1){
+            cout << "Array ist leer" << endl;
+            return;
+        }
+
+        bool b = false;
+        for(int i=0;i<m_arraySize;i++){
+            if(*(m_p_array + i) == value){
+                b = true;
+            }
+        }
+        return b;
+    };
+
+    void aendereWert(int index, int value){
+        if(index < 0 || index >= m_arraySize){
+            cout << "Index nicht im Bereich des Arrays" << end;
+            return;
+        }
+        *(m_p_array + index) = value;
+    };
+};
+
+int main(){
+    MyArray myArr(5);
+    int arr[5] = {50,51,52,53,54};
+
+    for(int i=23;i<28;i++){
+        myArr.einfügen(i);
+    };
+
+    int arrA[5][3] = {
+        {1,2,3},
+        {4,5,6},
+        {7,8,9},
+        {10,11,12},
+        {13,14,15}
+    };
+
+    int arrB[3][5];
+    int hilfX, hilfY;
+
+    for(int i=0;i<5;i++){
+        for(int t=0;t<3;t++){
+            arrB[hilfY][hilfX] = arrA[i][t];
+            if(hilfX >= 4){
+                hilfY++;
+                hilfX=0;
+            }
+            else{
+                hilfX++;
+            }
+        }
+    }
+};

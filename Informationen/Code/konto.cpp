@@ -21,6 +21,9 @@ void Konto::einzahlen(double betrag){
     kontostand += betrag;
 };
 
+// Funktion kann auch ohne Objekt durchgeführt werden
+int Konto::getAnzahl(){ return anzahl;};
+
 bool Konto::abheben(double betrag){
     if(kontostand > betrag){
         kontostand -= betrag;
@@ -38,5 +41,5 @@ bool Konto::compare(Konto* konto){
 };
 
 int main(){
-    
+    Konto::getAnzahl();
 }

@@ -5,6 +5,7 @@ private:
     int nummer;
     string inhaber;
     double kontostand;
+    static int anzahl;  // Klassenvariable
 public:
     // Konstruktoren
     Konto(); 
@@ -13,6 +14,7 @@ public:
     // Destruktor
     ~Konto();
 
+    static int getAnzahl();
     void einzahlen(double betrag);
     bool abheben(double betrag);
     bool compare(Konto* konto);

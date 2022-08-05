@@ -20,6 +20,7 @@ private:                // Nur in Klasse verfügbar
     string inhaber;
     double kontostand;
 
+    static int anzahl;  // Klassenvariable: Haben für alle Objekte von Typ Klasse den gleichen Wert
 protected:              // Nur in Klasse und unterklassen verfügbar
     int protVar;
 
@@ -27,6 +28,9 @@ public:                 // Zugriff von überall
     void einzahlen(double betrag){
         (*this).kontostand += betrag; // this ist immer der Zeiger auf das eigene Objekt
     }
+
+    // Funktion kann auch ohne Objekt durchgeführt werden
+    static int getAnzahl(){ return anzahl;};
 
     bool auszahlen(double betrag){
         if(this->kontostand > betrag){
@@ -47,7 +51,7 @@ int main(){
     Konto k1;
     // Dynamische Erzeugung eines Objektes mit Standard-Konstruktor
     Konto* k2 = new Konto(); 
-
+    
     k1.einzahlen(100);
     k1.druckeKontostand();
     if(k1.auszahlen(10)){
@@ -59,6 +63,10 @@ int main(){
     (*ptrKonto).einzahlen(200); 
     // oder
     ptrKonto->druckeKontostand();
+
+    // Klassenvariablen; gleiches Ergebnise
+    k1.getAnzahl();
+    Konto::getAnzahl();;
 }
 ```
 
