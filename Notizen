@@ -123,3 +123,127 @@ public:
         cout << name <<endl;
     };
 }
+
+Komplexaufgabe 2 (1.1):
+// Position -----------------------------------------------------------------------------------------------------
+// Header 
+#include <iostream>
+using namespace std;
+
+class Position{
+private:
+    Artikel m_artikel;
+public:
+    double getPositionsSumme();
+    friend ostream& operator<<(ostream &aus, const Position &pos);
+};
+
+// CPP
+#include <iostream>
+using namespace std;
+
+double Position::getPositionsSumme(){
+    double wert;
+    wert = menge * m_artikel.getPreis();
+    return wert;
+};
+
+ostream& operator<<(ostream &aus, const Position &pos){
+    return << "die Werte nur rauswerfen";
+};
+
+// Angebot -----------------------------------------------------------------------------------------------------
+// Header 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Angebot{
+private:
+    string m_nummer;
+    bool m_zustand;
+
+    Bearbeiter m_bearbeiter;
+    vector<Position*> allePositionen;
+public:
+    Angebot(bool z, string n);
+
+    bool hatNummer(string nummer);
+    double getAngebotsSumme();
+    void positionHinzu(Position *p_position);
+    string getNameBearbeiter();
+
+    friend ostream& operator<<(ostream &aus, const Angebot &ang);
+};
+
+// CPP
+#include <iostream>
+using namespace std;
+
+Angebot::Angebot((bool z, string n)):m_zustand(z),m_nummer(n) {};
+
+ bool Angebot::hatNummer(string nummer){
+    bool b = false;
+    if(nummer == m_nummer)
+        b = true;
+    return b;
+ };
+
+ double Angebot::getAngebotsSumme(){
+    double wert;
+    for(int i=0;i< allePositionen.size();i++){
+        wert += allePositionen[i]->getPositionsSumme();
+    }
+    return wert;
+ };
+
+  void Angebot::positionHinzu(Position *p_position){
+        allePositionen.push_back(p_position);
+ };
+
+ string Angebot::getNameBearbeiter(){
+        return m_bearbeiter.getName();
+ };
+
+ ostream& operator<<(ostream &aus, const Angebot &ang){
+    o << "";
+
+    for(int i=0;i< allePositionen.size();i++){
+        // Zeilen anfügen an o
+    }
+    o << "Angebotssnummer   " << ang.getAngebotsSumme() << endl;
+    return o;
+ };
+
+ 
+// Angebotscontainer -----------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Angebotscontainer{
+private:
+    vector<Angebot*> alleAngebote;
+public:
+    vector<Angebot*> getAlleAngebote();
+    void angebotHinzu(Angebot* ang);
+    Angebot* getAngebot(string angebotsNr);
+};
+
+// CPP
+#include <iostream>
+#include <vector>
+using namespace std;
+
+Angebot* Angebotscontainer::getAngebot(string angebotsNr){
+    Angebot* p_angebot;
+    for(int i=0;i<alleAngebote.size();i++){
+        if(alleAngebote.at(i)->hatNummer(angebotsNr)){
+            p_angebot = alleAngebote.at(i);
+        }
+    }
+    return p_angebot;
+};
+
+Aufgabe 7 (2.1)
+

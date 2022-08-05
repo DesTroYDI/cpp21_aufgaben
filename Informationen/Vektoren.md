@@ -161,3 +161,16 @@ Wert suchen und finden...
 Key: paul | Value= 1232434
 ```
 <br>
+
+# Enumerationen
+Der Template-Datentyp `enum` beschreibt einen Katalog an Werten, die einen Integer-Wert repräsentieren.
+
+## C++-Datei
+```cpp
+// Fester Katalog aus Werten die einen int Wert assoziiert haben
+enum Farben{ schwarz, weiss, gruen, gelb};
+
+int main(){
+    cout << schwarz << endl; // Ausgabe 0
+};
+```
