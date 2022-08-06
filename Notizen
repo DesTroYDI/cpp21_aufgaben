@@ -921,3 +921,104 @@ int main(){
         }
     }
 };
+
+Testaufgabe:
+
+Konto(int nr, float stand, Zinssatz zins)
+    :m_kontoNr(nr), m_kontostand(stand), m_zinssatz(zins){};
+
+Sparkonto(int nr, float stand, Zinssatz zins):
+    Konto(nr,stand,zins){};
+
+Festgeldkonto(int nr, float stand, Zinssatz zins, int laufzeit):
+    Konto(nr,stand,zins), m_laufzeit(laufzeit){};
+
+
+bool passtZu(char spenderBlutgruppe){
+    bool b=false;
+    if(m_blutgruppe == spenderBlutgruppe || m_blutgruppe = '0' || spenderBlutgruppe == '0'){
+        b=true;
+    }
+    return b;        
+};
+
+Komplexaufgabe 3 (1.1)
+
+#include <iostream>
+#include <vector>
+#include <exception>
+
+using namespace std;
+
+enum FruchtArt {Apfel, Birne, Paprika};
+
+class Frucht{
+private:
+    FruchtArt m_art;
+    string m_herkunft;
+    string m_farbe;
+public:
+    Frucht() {};
+    Frucht(FruchtArt art, string herkunft, string farbe)
+        :m_art(art), m_herkunft(herkunft),m_farbe(farbe) {};
+
+    friend ostream& operator<< (ostream &aus, const Frucht &f){
+        string werte[3]= {"Apfel", "Birne", "Paprika"};
+        o << werte[m_art] << " " << f.m_herkunft << " " << f.m_farbe;
+
+        return o; 
+    };
+};
+
+class Obstkorb{
+private:
+    Frucht m_fruchte[9];
+    int zaehlerFuerFruechte;
+    int indexFuerArray;
+public:
+    Obstkorb() {
+        indexFuerArray =0;
+        zaehlerFuerFruechte =9;
+        // Schleifen zum füllen von Array mit beispielwerten
+
+        };
+
+    void ausgeben(){
+        for(int i=0; i<zaehlerFuerFruechte;i++){
+            cout << m_fruchte[i] << endl;
+        };
+    };
+
+    Frucht fruchtEntnehmen(){
+        if(zaehlerFuerFruechte > 0){
+            zaehlerFuerFruechte--;
+            int ind = zaehlerFuerFruechte+1;
+            return m_fruchte[ind];
+        }
+        else
+            throw ExceptionClass();
+    };
+};
+
+class ExceptionClass: public exception{
+     public:
+        const char* what() const throw()
+        {return "Keine Frucht mehr da";}
+};
+
+int main(){
+    Obstkorb ob;
+    int satt = 0;
+    
+    try{
+        while(satt == 0){
+            Frucht f =  ob.fruchtEntnehmen();
+
+            cout << "Sind Sie satt? (0 = nein , 1 = ja): ";
+            cin >> satt;
+        }
+    }
+    catch(ExceptionClass e){
+        cout << e.what() << endl;
+    };
+};
